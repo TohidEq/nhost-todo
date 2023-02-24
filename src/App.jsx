@@ -4,10 +4,12 @@ import "./App.css";
 
 import nhost from "./utils/nhost";
 import gql from "graphql-tag";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation, useSubscription } from "@apollo/client";
+
+//  replace (query->subscription) & (useQuery->useSubscription) //
 
 const GET_TODOS = gql`
-  query {
+  subscription {
     todos {
       id
       created_at
@@ -26,7 +28,7 @@ const INSERT_TODO = gql`
 `;
 
 function App() {
-  const { data, loading } = useQuery(GET_TODOS);
+  const { data, loading } = useSubscription(GET_TODOS);
   const [insertTodo] = useMutation(INSERT_TODO);
   const [todoName, setTodoName] = useState("");
 
