@@ -72,7 +72,7 @@ function Home() {
       <div>
         <h3>Todos:</h3>
         {!data ? (
-          "No todos..."
+          <div>No todos...</div>
         ) : (
           <ul>
             {data.todos.map((todo) => (
